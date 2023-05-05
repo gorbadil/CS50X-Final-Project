@@ -1,0 +1,54 @@
+.main-header {
+  height: 60vh;
+  background-image: url("https://image.cnbcfm.com/api/v1/image/104768589-movies-anywhere.JPG?v=1507816437&w=740&h=416&ffmt=webp&vtcrop=y");
+  clip-path: (0 0, 100 0, 100 100);
+  background-position: top;
+}
+
+.header-sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.head-title-main {
+  font-size: 5rem;
+  text-align: center;
+  line-height: 6rem;
+  /* margin: 100px; */
+  background-color: #0005;
+}
+
+.head-title-sub {
+  /* font-size: 2.5rem; */
+  text-align: center;
+  background-color: #0005;
+}
+
+.header-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80vh;
+  min-height: 300px;
+  margin: 30px;
+}
+
+.seperat {
+  height: 7px;
+  width: 80vw;
+  margin: 60px auto;
+}
+
+.card:hover ~ .card {
+  background-color: #fff;
+  border-color: #fff;
+  border-radius: 3px;
+  border: 2px solid red;
+}
+
+.card {
+  width: 20vw;
+  min-width: 350px;
+}

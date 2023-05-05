@@ -4,102 +4,124 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flowbite Flask</title>
+    <title>Movie Search</title>
     <link
       rel="stylesheet"
       href="{{url_for('static',filename='dist/css/output.css')}}"
     />
+    <link rel="stylesheet" href="../static/index.css" />
   </head>
-
-  <body>
-    <nav
-      class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900"
-    >
-      <div
-        class="container flex flex-wrap items-center justify-between mx-auto"
+  <body class="bg-black">
+    <header class="main-header bg-black">
+      <nav
+        class="bg-gradient-to-b from-purple-950 to-transparent from-60% shadow-2xl rounded-xl flex flex-row justify-between text-white font-extrabold"
       >
-        <a href="https://flowbite.com/" class="flex items-center">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            class="h-6 mr-3 sm:h-9"
-            alt="Flowbite Logo"
-          />
-          <span
-            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-            >Flowbite</span
-          >
-        </a>
-        <div class="flex md:order-2">
-          <button
-            type="button"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Get started
-          </button>
-          <button
-            data-collapse-toggle="navbar-cta"
-            type="button"
-            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-cta"
-            aria-expanded="false"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-6 h-6"
-              aria-hidden="true"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-        </div>
-        <div
-          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-          id="navbar-cta"
-        >
-          <ul
-            class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-          >
-            <li>
-              <a
-                href="#"
-                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-                aria-current="page"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >Services</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >Contact</a
-              >
-            </li>
+        <div class="mx-6 flex flex-row">
+          <a href="/">
+            <img
+              src="https://m.media-amazon.com/images/I/51A10zqCNeL.png"
+              alt="Logo"
+              class="w-8 m-3 rounded-full"
+            />
+          </a>
+          <ul class="flex flex-row">
+            <li class="p-4"><a href="">Home</a></li>
+            <li class="p-4"><a href="">List</a></li>
           </ul>
         </div>
-      </div>
-    </nav>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+        <div class="mx-6">
+          <ul class="flex flex-row">
+            <li class="p-4">Register</li>
+            <li class="p-4">Log-In</li>
+          </ul>
+        </div>
+      </nav>
+      <header>
+        <section class="header-sec grid lg:grid-cols-2 sm:grid-cols-1">
+          <div class="header-head">
+            <h1>
+              <span class="head-title-main block text-white text-2xl lg:m-10"
+                >Movie Search</span
+              ><span
+                class="head-title-sub block text-white lg:text-4xl md:text-sm sm:text-sm"
+                >Add, Remove, List, Track</span
+              >
+            </h1>
+          </div>
+          <!-- <div class="header-head bg-slate-400 border-4 border-purple-400"></div> -->
+        </section>
+      </header>
+    </header>
+    <div
+      class="seperat bg-gradient-to-b from-purple-950 to-purple-800 rounded-lg border-slate-300"
+    ></div>
+    <main>
+      <section
+        class="search grid xl:grid-cols-2 sm:grid-cols-1 bg-gradient-to-b from-black to-slate-950"
+      >
+        <div class="grid place-content-center">
+          <h1 class="text-5xl m-6 text-slate-200">Movie Search</h1>
+        </div>
+        <div class="grid place-content-center">
+          <form action="/search" method="post" class="grid grid-cols-2 m-4">
+            <input
+              class="bg-slate-300"
+              type="text"
+              placeholder="Search"
+              name="search"
+              id="search"
+            />
+            <button
+              class="bg-slate-700 text-slate-100 w-7/12 ml-4 hover:bg-slate-100 hover:text-slate-700"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+      </section>
+      <!-- <div class="seperat bg-gradient-to-r from-purple-500 to-blue-600 rounded-lg border-slate-300"></div> -->
+      <section
+        class="cards bg-gradient-to-b from-slate-950 to-slate-900 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 p-10"
+      >
+        {% for i in list %}
+        <div class="cards gap-4 relative grid place-content-center">
+          <div
+            class="group transition-all sm:w-7 relative card card-z text-slate-300 rounded-xl text-center inline-block my-4 hover:scale-125 duration-100 hover:border-0"
+          >
+            <div
+              class="card-content group-hover:z-50 my-10 relative duration-300 p-2"
+            >
+              <img class="group-hover:scale-110 grayscale
+              group-hover:grayscale-0 duration-500 relative rounded-lg
+              group-hover:z-50" src={{i["poster_path"]}} alt="Movie Logo" />
+              <h4
+                class="m-2 absolute duration-300 group-hover:z-50 transition-all -translate-y-7 bg-slate-900 bg-opacity-50 group-hover:-translate-y-20 group-hover:bg-slate-900 group-hover:bg-opacity-50"
+              >
+                {{i["original_title"]}}
+              </h4>
+              <div
+                class="m-2 absolute flex group-hover:flex-col group-hover:z-50 w-40 descarea duration-300 transition-all group-hover:-translate-y-8 group-hover:bg-slate-900 group-hover:bg-opacity-50 group-hover:visible invisible"
+              >
+                <p class="">Year:{{i["release_date"]}}</p>
+                <p class=" ">Rate:{{i["vote_average"]}}</p>
+                <form action="/favorites" method="post">
+                  <button
+                    class="absolute group-hover:z-50 w-40 justify-between descarea duration-300 transition-all group-hover:-translate-y-80 group-hover:bg-slate-900 group-hover:bg-opacity-50 group-hover:visible invisible"
+                  >
+                    Save To Favorites
+                  </button>
+                  <input type="text" disabled class="hidden" name="movie_id"
+                  value={{i["id"]}} >
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </section>
+    </main>
+    <footer class="flex justify-center bg-slate-900 text-white text-lg p-2">
+      <p>Made For CS50X Final Project.</p>
+    </footer>
   </body>
 </html>
