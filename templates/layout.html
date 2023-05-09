@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dist/css/output.css')}}"
+    />
+    <link rel="stylesheet" href="../static/index.css" />
+  </head>
+  <body class="bg-black">
+    <header class="main-header bg-black">
+      <nav
+        class="bg-gradient-to-b from-purple-950 to-transparent from-60% shadow-2xl rounded-xl flex flex-row justify-between text-white font-extrabold"
+      >
+        <div class="mx-6 flex flex-row">
+          <a href="/">
+            <img
+              src="https://m.media-amazon.com/images/I/51A10zqCNeL.png"
+              alt="Logo"
+              class="w-8 m-3 rounded-full"
+            />
+          </a>
+          <ul class="flex flex-row">
+            <li class="p-4"><a href="/">Home</a></li>
+            <li class="p-4"><a href="/favorites">List</a></li>
+          </ul>
+        </div>
+        <div class="clock"></div>
+        <div class="mx-6">
+          <ul class="flex flex-row">
+            {% if session.user_id %}
+            <li class="p-4"><a href="/logout">Log-Out</a></li>
+            {% else %}
+            <li class="p-4"><a href="/register">Register</a></li>
+            <li class="p-4"><a href="/login">Log-In</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+      <header>
+        <section class="header-sec grid lg:grid-cols-2 sm:grid-cols-1">
+          <div class="header-head">
+            <h1>
+              <span class="head-title-main block text-white text-2xl lg:m-10"
+                >Movie Search</span
+              ><span
+                class="head-title-sub block text-white lg:text-4xl md:text-sm sm:text-sm"
+                >Add, Remove, List, Track</span
+              >
+            </h1>
+          </div>
+        </section>
+      </header>
+    </header>
+    <div
+      class="seperat bg-gradient-to-b from-purple-950 to-purple-800 rounded-lg border-slate-300"
+      
+    ></div>
+    {% block main %}{% endblock %}
+
+    <footer class="bg-slate-900 text-white text-lg myclass">
+      <p class="text-center">Made For CS50X Final Project.</p>
+    </footer>
+    <script src="../static/index.js"></script>
+  </body>
+</html>

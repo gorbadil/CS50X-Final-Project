@@ -1,127 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie Search</title>
-    <link
-      rel="stylesheet"
-      href="{{url_for('static',filename='dist/css/output.css')}}"
-    />
-    <link rel="stylesheet" href="../static/index.css" />
-  </head>
-  <body class="bg-black">
-    <header class="main-header bg-black">
-      <nav
-        class="bg-gradient-to-b from-purple-950 to-transparent from-60% shadow-2xl rounded-xl flex flex-row justify-between text-white font-extrabold"
+{% extends "layout.html" %} {% block main %}
+<main>
+  <section
+    class="search grid xl:grid-cols-2 sm:grid-cols-1 bg-gradient-to-b from-black to-slate-950"
+  >
+    <div class="grid place-content-center">
+      <h1 class="text-5xl m-6 text-slate-200">Movie Search</h1>
+    </div>
+    <div class="grid place-content-center">
+      <form action="/search" method="post" class="grid grid-cols-2 m-4">
+        <input
+          class="bg-slate-300"
+          type="text"
+          placeholder="Search"
+          name="search"
+          id="search"
+        />
+        <button
+          class="bg-slate-700 text-slate-100 w-7/12 ml-4 hover:bg-slate-100 hover:text-slate-700"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </section>
+  <div
+    class="seperat bg-gradient-to-r from-purple-500 to-blue-600 rounded-lg border-slate-300"
+  ></div>
+  <section
+    class="cards bg-gradient-to-b from-slate-950 to-slate-900 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 p-10"
+  >
+    {% for i in list %}
+    <div class="cards gap-4 relative grid place-content-center">
+      <div
+        class="group transition-all sm:w-7 relative card card-z text-slate-300 rounded-xl text-center inline-block my-4 hover:scale-125 duration-100 hover:border-0"
       >
-        <div class="mx-6 flex flex-row">
-          <a href="/">
-            <img
-              src="https://m.media-amazon.com/images/I/51A10zqCNeL.png"
-              alt="Logo"
-              class="w-8 m-3 rounded-full"
-            />
-          </a>
-          <ul class="flex flex-row">
-            <li class="p-4"><a href="">Home</a></li>
-            <li class="p-4"><a href="">List</a></li>
-          </ul>
-        </div>
-        <div class="mx-6">
-          <ul class="flex flex-row">
-            <li class="p-4">Register</li>
-            <li class="p-4">Log-In</li>
-          </ul>
-        </div>
-      </nav>
-      <header>
-        <section class="header-sec grid lg:grid-cols-2 sm:grid-cols-1">
-          <div class="header-head">
-            <h1>
-              <span class="head-title-main block text-white text-2xl lg:m-10"
-                >Movie Search</span
-              ><span
-                class="head-title-sub block text-white lg:text-4xl md:text-sm sm:text-sm"
-                >Add, Remove, List, Track</span
-              >
-            </h1>
-          </div>
-          <!-- <div class="header-head bg-slate-400 border-4 border-purple-400"></div> -->
-        </section>
-      </header>
-    </header>
-    <div
-      class="seperat bg-gradient-to-b from-purple-950 to-purple-800 rounded-lg border-slate-300"
-    ></div>
-    <main>
-      <section
-        class="search grid xl:grid-cols-2 sm:grid-cols-1 bg-gradient-to-b from-black to-slate-950"
-      >
-        <div class="grid place-content-center">
-          <h1 class="text-5xl m-6 text-slate-200">Movie Search</h1>
-        </div>
-        <div class="grid place-content-center">
-          <form action="/search" method="post" class="grid grid-cols-2 m-4">
-            <input
-              class="bg-slate-300"
-              type="text"
-              placeholder="Search"
-              name="search"
-              id="search"
-            />
-            <button
-              class="bg-slate-700 text-slate-100 w-7/12 ml-4 hover:bg-slate-100 hover:text-slate-700"
-            >
-              Search
-            </button>
-          </form>
-        </div>
-      </section>
-      <!-- <div class="seperat bg-gradient-to-r from-purple-500 to-blue-600 rounded-lg border-slate-300"></div> -->
-      <section
-        class="cards bg-gradient-to-b from-slate-950 to-slate-900 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 p-10"
-      >
-        {% for i in list %}
-        <div class="cards gap-4 relative grid place-content-center">
-          <div
-            class="group transition-all sm:w-7 relative card card-z text-slate-300 rounded-xl text-center inline-block my-4 hover:scale-125 duration-100 hover:border-0"
+        <div
+          class="card-content group-hover:z-50 my-10 relative duration-300 p-2"
+        >
+          <img class="group-hover:scale-110 grayscale group-hover:grayscale-0
+          duration-500 relative rounded-lg group-hover:z-50"
+          src={{i["poster_path"]}} alt="Movie Logo" />
+          <h4
+            class="m-2 absolute duration-300 group-hover:z-50 transition-all -translate-y-7 bg-slate-900 bg-opacity-50 group-hover:-translate-y-20 group-hover:bg-slate-900 group-hover:bg-opacity-50"
           >
-            <div
-              class="card-content group-hover:z-50 my-10 relative duration-300 p-2"
-            >
-              <img class="group-hover:scale-110 grayscale
-              group-hover:grayscale-0 duration-500 relative rounded-lg
-              group-hover:z-50" src={{i["poster_path"]}} alt="Movie Logo" />
-              <h4
-                class="m-2 absolute duration-300 group-hover:z-50 transition-all -translate-y-7 bg-slate-900 bg-opacity-50 group-hover:-translate-y-20 group-hover:bg-slate-900 group-hover:bg-opacity-50"
+            {{i["original_title"]}}
+          </h4>
+          <div
+            class="m-2 absolute flex group-hover:flex-col group-hover:z-50 w-40 descarea duration-300 transition-all group-hover:-translate-y-8 group-hover:bg-slate-900 group-hover:bg-opacity-50 group-hover:visible invisible"
+          >
+            <p class="">Year:{{i["release_date"]}}</p>
+            <p class=" ">Rate:{{i["vote_average"]}}</p>
+            <form action="/favorites" method="post">
+              <button
+                class="absolute group-hover:z-50 w-40 justify-between descarea duration-300 transition-all group-hover:-translate-y-80 group-hover:bg-slate-900 group-hover:bg-opacity-50 group-hover:visible invisible"
               >
-                {{i["original_title"]}}
-              </h4>
-              <div
-                class="m-2 absolute flex group-hover:flex-col group-hover:z-50 w-40 descarea duration-300 transition-all group-hover:-translate-y-8 group-hover:bg-slate-900 group-hover:bg-opacity-50 group-hover:visible invisible"
-              >
-                <p class="">Year:{{i["release_date"]}}</p>
-                <p class=" ">Rate:{{i["vote_average"]}}</p>
-                <form action="/favorites" method="post">
-                  <button
-                    class="absolute group-hover:z-50 w-40 justify-between descarea duration-300 transition-all group-hover:-translate-y-80 group-hover:bg-slate-900 group-hover:bg-opacity-50 group-hover:visible invisible"
-                  >
-                    Save To Favorites
-                  </button>
-                  <input type="text" disabled class="hidden" name="movie_id"
-                  value={{i["id"]}} >
-                </form>
-              </div>
-            </div>
+                Save To Favorites
+              </button>
+              <input type="hidden" class="hidden" id="movie_id" name="movie_id"
+              value={{i["id"]}} > <input type="hidden" class="hidden"
+              name="image" id="image" value={{i["poster_path"]}}> <input
+              type="hidden" class="hidden" name="title" id="title"
+              value={{i["original_title"]}}> <input type="hidden" class="hidden"
+              name="date" id="date" value={{i["release_date"]}}> <input
+              type="hidden" class="hidden" name="vote" id="vote"
+              value={{i["vote_average"]}}>
+            </form>
           </div>
         </div>
-        {% endfor %}
-      </section>
-    </main>
-    <footer class="flex justify-center bg-slate-900 text-white text-lg p-2">
-      <p>Made For CS50X Final Project.</p>
-    </footer>
-  </body>
-</html>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+</main>
+
+{% endblock %}

@@ -34,7 +34,14 @@ def login_required(f):
 @app.route("/")
 @app.route("/index")
 def index():
+    print(session)
     return render_template("index.html")
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
 
 
 @app.after_request
@@ -49,9 +56,7 @@ def after_request(response):
 @app.route("/search", methods=["POST"])
 def search():
     if request.method == "POST":
-        # data = request.json
         search = request.form["search"]
-        # search = data["search"]
         search = URL + search
     response = requests.get(url=search)
     response.raise_for_status
@@ -70,9 +75,18 @@ def search():
 @login_required
 def favorites():
     if request.method == "POST":
-        return
+        movie_id = int(request.form["movie_id"])
+        image = str(request.form["image"])
+        title = str(request.form["title"])
+        date = str(request.form["date"])
+        vote = str(request.form["vote"])
+        user_id = int(session["user_id"])
+        db.execute(
+            "INSERT INTO favorites (user_id, movie_id, image, title, date, vote) VALUES (?);",
+            (user_id, movie_id, image, title, date, vote),
+        )
     user_id = session["user_id"]
-    user_list = db.execute(f"SELECT * FROM favorite WHERE user_id = {user_id}")
+    user_list = db.execute(f"SELECT * FROM favorites WHERE user_id = {user_id}")
     return render_template("favorites.html", list=user_list)
 
 
@@ -89,17 +103,16 @@ def login():
         username = request.form.get("username")
         # Ensure password was submitted
         password = request.form.get("password")
-        rows = db.execute(
-            "SELECT * FROM user WHERE username = ?", request.form.get("username")
-        )
+        rows = db.execute("SELECT * FROM user WHERE username = ?", username)
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not (rows[0]["password"] == password):
             return redirect("/login")
-
+        print(username)
+        print(password)
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
-
+        print(session)
         # Redirect user to home page
         return redirect("/")
 

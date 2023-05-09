@@ -1,3 +1,10 @@
+body {
+  min-height: 100vh;
+  /* position: relative; */
+  /* display: flex;
+  flex-direction: column; */
+}
+
 .main-header {
   height: 60vh;
   background-image: url("https://image.cnbcfm.com/api/v1/image/104768589-movies-anywhere.JPG?v=1507816437&w=740&h=416&ffmt=webp&vtcrop=y");
@@ -51,4 +58,32 @@
 .card {
   width: 20vw;
   min-width: 350px;
+}
+.myclass {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+}
+
+#container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-out;
+}
+
+.clock {
+  font-size: 1.3rem;
 }
